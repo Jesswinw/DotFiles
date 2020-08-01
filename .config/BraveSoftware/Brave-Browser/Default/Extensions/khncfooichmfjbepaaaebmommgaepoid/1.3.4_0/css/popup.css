@@ -1,0 +1,97 @@
+body {
+	font-size: medium;
+	font-family: Segoe UI, sans-serif;
+	width: 15em;
+	margin: 0;
+}
+
+header, footer {
+	display: -webkit-flex;
+	display: flex;
+	font-size: smaller;
+	font-family: sans-serif;
+}
+
+header {
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	padding: .15em .3em;
+	background-color: #555;
+	color: #fff;
+}
+
+footer {
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-evenly;
+	justify-content: space-evenly;
+	background-color: #eee;
+	color: #555;
+}
+
+footer span {
+	padding-top: .15em;
+	padding-bottom: .15em;
+}
+
+ul {
+	list-style: none;
+	padding-inline-start: 1.25em;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+a:hover {color: #ddd}
+
+#options {
+	margin-left: -1.25em;
+	padding: .275em .75em .375em;
+}
+
+.option {
+	display: block;
+	position: relative;
+	padding-left: 1.3em;
+	margin-bottom: .04em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.option input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.checkmark {
+	position: absolute;
+    top: .3725em;
+    left: 0;
+    height: .5em;
+    width: .5em;
+	border: .125em solid #ddd;
+}
+
+.checkmark:after {
+	content: "";
+	height: .5em;
+	width: .5em;
+	display: none;
+	background-color: #999;
+}
+
+input:checked ~ .checkmark:after {display: block}
+
+#reload {
+	cursor: pointer;
+	fill: #777;
+}
+
+#reload:hover {fill: #555}

@@ -1,0 +1,1 @@
+var rightclicked_item=null;document.body&&(document.body.addEventListener("contextmenu",function(a){rightclicked_item=a.srcElement}),document.body.addEventListener("click",function(){rightclicked_item=null}));

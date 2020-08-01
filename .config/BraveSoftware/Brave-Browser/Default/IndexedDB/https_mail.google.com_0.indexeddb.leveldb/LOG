@@ -1,0 +1,5 @@
+2020/07/30-22:27:03.516 2bf5 Reusing MANIFEST /home/jesswinw/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/07/30-22:30:40.760 2cfe Level-0 table #5: started
+2020/07/30-22:30:40.813 2cfe Level-0 table #5: 2058 bytes OK
+2020/07/30-22:30:40.864 2cfe Delete type=0 #3
+2020/07/30-22:30:40.864 2cfe Manual compaction at level-0 from (begin) .. (end); will stop at (end)

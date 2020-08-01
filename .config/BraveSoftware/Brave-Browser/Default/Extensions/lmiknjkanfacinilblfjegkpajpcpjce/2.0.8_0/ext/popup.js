@@ -1,0 +1,1 @@
+"use strict";(function(){("undefined"==typeof chrome||"undefined"==typeof chrome.extension)&&(window.chrome=browser);const a=chrome.extension.getBackgroundPage();window.ext=Object.create(a.ext),window.ext.closePopup=()=>{window.close()},window.ext.i18n=chrome.i18n,window.ext.backgroundPage={sendMessage:chrome.runtime.sendMessage,getWindow(){return a}}})();

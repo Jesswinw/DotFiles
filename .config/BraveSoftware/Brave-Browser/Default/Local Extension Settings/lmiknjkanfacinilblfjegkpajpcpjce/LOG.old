@@ -1,0 +1,20 @@
+2020/08/01-17:55:59.199 193e1 Reusing MANIFEST /home/jesswinw/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings/lmiknjkanfacinilblfjegkpajpcpjce/MANIFEST-000001
+2020/08/01-17:55:59.199 193e1 Recovering log #104
+2020/08/01-17:55:59.216 193e1 Level-0 table #108: started
+2020/08/01-17:55:59.375 193e1 Level-0 table #108: 1939314 bytes OK
+2020/08/01-17:55:59.524 193e1 Delete type=0 #104
+2020/08/01-17:57:25.480 19631 Compacting 1@0 + 1@1 files
+2020/08/01-17:57:25.548 19631 Generated table #110@0: 4 keys, 969758 bytes
+2020/08/01-17:57:25.548 19631 Compacted 1@0 + 1@1 files => 969758 bytes
+2020/08/01-17:57:25.621 19631 compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/08/01-17:57:25.621 19631 Delete type=2 #106
+2020/08/01-17:57:25.621 19631 Delete type=2 #108
+2020/08/01-17:59:25.312 19631 Compacting 1@1 + 1@2 files
+2020/08/01-17:59:25.708 19631 Generated table #111@1: 9 keys, 970008 bytes
+2020/08/01-17:59:25.708 19631 Compacted 1@1 + 1@2 files => 970008 bytes
+2020/08/01-17:59:25.770 19631 compacted to: files[ 0 0 1 0 0 0 0 ]
+2020/08/01-17:59:25.770 19631 Delete type=2 #110
+2020/08/01-17:59:25.770 19631 Delete type=2 #91
+2020/08/01-18:10:59.645 19631 Level-0 table #113: started
+2020/08/01-18:10:59.752 19631 Level-0 table #113: 1938062 bytes OK
+2020/08/01-18:10:59.804 19631 Delete type=0 #109

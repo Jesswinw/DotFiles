@@ -1,0 +1,1 @@
+"use strict";const{port}=require("messaging");port.on("forward",(a,b)=>{let c;if(c=a.targetPageId?ext.getPage(a.targetPageId):b.page,c){if(a.payload.sender=b.page.id,a.expectsResponse)return new Promise(c.sendMessage.bind(c,a.payload));c.sendMessage(a.payload)}});

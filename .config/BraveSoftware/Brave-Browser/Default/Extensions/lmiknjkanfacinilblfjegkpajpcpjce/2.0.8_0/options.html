@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title i18n="optionstitle"></title>
+    <link rel="stylesheet" href="adblock-jquery-ui.custom.css"/>
+    <link rel="stylesheet" href="adblock-option-options.css"/>
+    <script src="ext/common.js"></script>
+    <script src="ext/content.js"></script>
+    <script src="i18n.js" charset="utf-8"></script>
+    <script src="adblock-jquery.min.js"></script>
+    <script src="adblock-jquery.cookie.js"></script>
+    <script src="adblock-jquery-ui.custom.min.js"></script>
+    <script src="adblock-functions.js"></script>
+    <script src="adblock-option-index.js"></script>
+</head>
+<body>
+
+<div id="tabpages">
+    <ul>
+        <li data-scripts="adblock-option-general.js" style="height: 0!important;">
+            <a href="adblock-option-general.html"></a>
+        </li>
+    </ul>
+</div>
+
+<div class="noticecontainer">
+    <div class="notice" id="safari50_updatenotice" i18n="safari50_updatenotice"
+         i18n_replacement_el="safari50_update_link"></div>
+    <a id="safari50_update_link" href="https://www.apple.com/safari/" target="_blank"></a>
+</div>
+
+<footer>
+    <span id="version_number"></span>
+</footer>
+</body>
+</html>
