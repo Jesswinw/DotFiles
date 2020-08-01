@@ -61,8 +61,14 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.run_extension(extension.DmenuRun(
-        dmenu_prompt=">"
+        dmenu_prompt=">",
+        dmenu_font="Fira Code",
+        background="#060b0e",
+        foreground="#F7005B",
+        selected_background="#F7005B",
+        selected_foreground="#060b0e",
     ))),
+    Key([mod], "b", lazy.spawn('brave')),
     Key([mod], "c", lazy.spawn("code")),
 ]
 
@@ -88,11 +94,12 @@ layouts = [
     # layout.Bsp(),
     # layout.Columns(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(margin=8, border_width=2,
+                     border_focus="#F7005B", border_normal="#060b0e"),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    layout.Tile(margin=3, border_width=2,
-                border_focus="#ff0000", border_normal="#000000"),
+    # layout.Tile(margin=5, border_width=2,
+    #             border_focus="#F7005B", border_normal="#060b0e"),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -101,7 +108,7 @@ layouts = [
 widget_defaults = dict(
     font='sans',
     fontsize=12,
-    padding=3,
+    padding=5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -109,18 +116,24 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(
+                    highlight_method="block",
+                    this_screen_border="#F7005B",
+                    this_current_screen_border="#F7005B",
+                ),
                 widget.Prompt(),
-                widget.TextBox("default config", name="default"),
                 widget.Systray(),
-                widget.WindowName(),
+                widget.WindowName(foreground="#F7005B"),
+                widget.Volume(),
                 widget.Battery(),
-                widget.CPUGraph(),
+                widget.CPUGraph(border_color="#060b0e",
+                                graph_color="#F7005B",
+                                ),
                 widget.Clock(format='%d-%m-%Y %a %I:%M %p'),
                 widget.QuickExit(),
             ],
-            20,
+            22,
+            background="#060b0e"
         ),
     ),
 ]
