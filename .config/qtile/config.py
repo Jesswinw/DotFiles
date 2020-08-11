@@ -24,9 +24,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+import subprocess
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.lazy import lazy
-from libqtile import layout, bar, widget, extension
+from libqtile import layout, bar, widget, extension, hook
 
 from typing import List  # noqa: F401
 
@@ -68,11 +70,32 @@ keys = [
         selected_background="#F7005B",
         selected_foreground="#060b0e",
     ))),
+    Key([mod, "shift"], "p", lazy.spawn('xfce4-screenshooter -f')),
     Key([mod], "b", lazy.spawn('brave')),
     Key([mod], "c", lazy.spawn("code")),
+
+    # INCREASE/DECREASE/MUTE VOLUME
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")),
+
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioStop", lazy.spawn("playerctl stop")),
+
+
+    # INCREASE/DECREASE BRIGHTNESS
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")),
+
+    # Screenshot controls
+    Key([mod], "Print", lazy.spawn('xfce4-screenshooter')),
+
+
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+groups = [Group(i) for i in "asdf"]
 
 for i in groups:
     keys.extend([
@@ -88,25 +111,13 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Max(),
-    # layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.Columns(),
-    # layout.Matrix(),
     layout.MonadTall(margin=8, border_width=2,
                      border_focus="#F7005B", border_normal="#060b0e"),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(margin=5, border_width=2,
-    #             border_focus="#F7005B", border_normal="#060b0e"),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Max(),
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='Fira Code Bold',
     fontsize=12,
     padding=5,
 )
@@ -124,16 +135,20 @@ screens = [
                 widget.Prompt(),
                 widget.Systray(),
                 widget.WindowName(foreground="#F7005B"),
-                widget.Volume(),
-                widget.Battery(),
+
+                widget.CPU(format="{freq_current}GHz"),
+                widget.ThermalSensor(),
                 widget.CPUGraph(border_color="#060b0e",
                                 graph_color="#F7005B",
+                                mouse_callbacks={
+                                    "Button1": lambda lazy: lazy.cmd_spawn('alacritty -e htop -s PERCENT_MEM')}
                                 ),
-                widget.Clock(format='%d-%m-%Y %a %I:%M %p'),
-                widget.QuickExit(),
+                widget.Clock(format='%a %I:%M%p'),
+                widget.Battery(charge_char="+", discharge_char="- ",
+                               format='{char}{percent:2.0%}'),
             ],
             22,
-            background="#060b0e"
+            background="#060c10"
         ),
     ),
 ]
@@ -172,6 +187,13 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = False
 focus_on_window_activation = "smart"
+
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
